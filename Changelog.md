@@ -1,3 +1,20 @@
+## 0.9.19 (release date: 2016-07-11)
+
+ * Upgraded to baseimage-docker 0.9.19.
+ * Upgraded to Ubuntu 16.04 with security updates as of July 11, 2016.
+ * Upgraded to Phusion Passenger 5.0.29.
+ * Upgraded Redis to 3.0.
+ * We now use RVM to manage Ruby interpreters, instead of the Brightbox APT repository. Please see the README for rationale.
+ * Removed support for Ruby 1.9.
+ * Added support for Ruby 2.3.1.
+ * Upgraded to Ruby 2.1.9 and 2.2.5.
+ * Upgraded to JRuby 9.1.2.0. We are still on OpenJDK 8 because there is a problem with JRuby and OpenJDK 9.
+ * Upgraded to Node.js 4.2.6.
+ * ImageMagick is no longer included (needed by rmagick and minimagick). This shaves around 120 MB. If you need it you should install it yourself.
+ * Man pages, documentation and non-English locales are now removed. This shaves around 64 MB.
+ * Gzip support in Nginx is now correctly enabled by default. Closes GH-115.
+ * Nginx log rotation has now been fixed. Closes GH-113.
+
 ## 0.9.18 (release date: 2015-12-08)
 
  * Upgraded to Phusion Passenger 5.0.22.

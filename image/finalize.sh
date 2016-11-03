@@ -1,13 +1,20 @@
 #!/bin/bash
 set -e
 source /pd_build/buildconfig
-set -x
 
-apt-get clean
-rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+header "Finalizing..."
+
+if [[ -e /usr/local/rvm ]]; then
+	run /usr/local/rvm/bin/rvm cleanup all
+fi
+
+run apt-get remove -y autoconf automake
+run apt-get autoremove
+run apt-get clean
+run rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 if [[ "$final" = 1 ]]; then
-	rm -rf /pd_build
+	run rm -rf /pd_build
 else
-	rm -f /pd_build/{install,enable_repos,prepare,pups,nginx-passenger,finalize}.sh
-	rm -f /pd_build/{Dockerfile,insecure_key*}
+	run rm -f /pd_build/{install,enable_repos,prepare,nginx-passenger,finalize}.sh
+	run rm -f /pd_build/{Dockerfile,insecure_key*}
 fi
